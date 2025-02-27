@@ -1,3 +1,10 @@
+package table;
+
+import dbConnect.dbConnector;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import net.proteanit.sql.DbUtils;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,6 +22,19 @@ public class Table extends javax.swing.JFrame {
      */
     public Table() {
         initComponents();
+        displayData();
+    }
+    public void displayData(){
+        try{
+            dbConnector dbc = new dbConnector();
+            ResultSet rs = dbc.getData("SELECT * FROM user");
+            user.setModel(DbUtils.resultSetToTableModel(rs));
+             rs.close();
+        }catch(SQLException ex){
+            System.out.println("Errors: "+ex.getMessage());
+
+        }
+
     }
 
     /**
@@ -39,6 +59,8 @@ public class Table extends javax.swing.JFrame {
         Owner = new javax.swing.JLabel();
         Sales = new javax.swing.JLabel();
         Property5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        user = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -157,6 +179,21 @@ public class Table extends javax.swing.JFrame {
         Property5.setOpaque(true);
         jPanel1.add(Property5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        user.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(user);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 660, 510));
+
         jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 840, 510));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -222,5 +259,7 @@ public class Table extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable user;
     // End of variables declaration//GEN-END:variables
 }
