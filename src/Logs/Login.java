@@ -30,30 +30,76 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        User = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        Pass = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        Back = new javax.swing.JButton();
+        LOGin = new javax.swing.JButton();
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/building.jpg"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/building.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 620, 440));
-
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel2.setText("REAL ESTATE MANAGEMENT SYSTEM");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
-
+        jButton1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jButton1.setText("REGISTER");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 140, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 140, 50));
 
-        jButton2.setText("LOGIN");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 130, 50));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("REAL ESTATE MANAGEMENT SYSTEM");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 490, 50));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 80));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 153));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 530));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("LOGIN");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 230, 80));
+
+        User.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        User.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        User.setText("Username :");
+        getContentPane().add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 90, 30));
+        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, 180, 30));
+
+        Pass.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Pass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Pass.setText("Password :");
+        getContentPane().add(Pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 90, 30));
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 180, 30));
+
+        Back.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        Back.setText("Back");
+        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 100, 40));
+
+        LOGin.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        LOGin.setText("LOGIN");
+        LOGin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LOGinActionPerformed(evt);
+            }
+        });
+        getContentPane().add(LOGin, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, 100, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -64,6 +110,10 @@ public class Login extends javax.swing.JFrame {
         dispose();
       
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void LOGinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LOGinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LOGinActionPerformed
 
     /**
      * @param args the command line arguments
@@ -101,9 +151,18 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Back;
+    private javax.swing.JButton LOGin;
+    private javax.swing.JLabel Pass;
+    private javax.swing.JLabel User;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

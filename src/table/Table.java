@@ -52,12 +52,12 @@ public class Table extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel_APP_ICON = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        Property = new javax.swing.JLabel();
-        Type = new javax.swing.JLabel();
-        Images = new javax.swing.JLabel();
-        Client = new javax.swing.JLabel();
-        Owner = new javax.swing.JLabel();
-        Sales = new javax.swing.JLabel();
+        Property = new javax.swing.JButton();
+        Type = new javax.swing.JButton();
+        Images = new javax.swing.JButton();
+        Client = new javax.swing.JButton();
+        Owner = new javax.swing.JButton();
+        Sales = new javax.swing.JButton();
         Property5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         user = new javax.swing.JTable();
@@ -100,74 +100,65 @@ public class Table extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        Property.setBackground(new java.awt.Color(255, 153, 51));
+        Property.setBackground(new java.awt.Color(255, 255, 255));
         Property.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        Property.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Property.setText("Property");
-        Property.setOpaque(true);
 
-        Type.setBackground(new java.awt.Color(255, 153, 51));
-        Type.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        Type.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Type.setBackground(new java.awt.Color(255, 255, 255));
+        Type.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         Type.setText("Property-Type");
-        Type.setOpaque(true);
 
-        Images.setBackground(new java.awt.Color(255, 153, 51));
-        Images.setFont(new java.awt.Font("Tahoma", 3, 17)); // NOI18N
-        Images.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Images.setText("Property-Images");
-        Images.setOpaque(true);
+        Images.setBackground(new java.awt.Color(255, 255, 255));
+        Images.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        Images.setText("Property-Image");
 
-        Client.setBackground(new java.awt.Color(255, 153, 51));
+        Client.setBackground(new java.awt.Color(255, 255, 255));
         Client.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        Client.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Client.setText("Client");
-        Client.setOpaque(true);
 
-        Owner.setBackground(new java.awt.Color(255, 153, 51));
+        Owner.setBackground(new java.awt.Color(255, 255, 255));
         Owner.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        Owner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Owner.setText("Owner");
-        Owner.setOpaque(true);
 
-        Sales.setBackground(new java.awt.Color(255, 153, 51));
+        Sales.setBackground(new java.awt.Color(255, 255, 255));
         Sales.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        Sales.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Sales.setText("Sales");
-        Sales.setOpaque(true);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Type, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Client, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Owner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Sales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Property, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Images, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Property, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Type, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Images, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Client, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Owner, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Sales, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(Property, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addComponent(Property, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Type, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Type, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Images, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Images, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Client, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Client, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Owner, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Owner, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Sales, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 131, Short.MAX_VALUE))
+                .addComponent(Sales, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 127, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 170, 510));
@@ -246,13 +237,13 @@ public class Table extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Client;
-    private javax.swing.JLabel Images;
-    private javax.swing.JLabel Owner;
-    private javax.swing.JLabel Property;
+    private javax.swing.JButton Client;
+    private javax.swing.JButton Images;
+    private javax.swing.JButton Owner;
+    private javax.swing.JButton Property;
     private javax.swing.JLabel Property5;
-    private javax.swing.JLabel Sales;
-    private javax.swing.JLabel Type;
+    private javax.swing.JButton Sales;
+    private javax.swing.JButton Type;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel_APP_ICON;
     private javax.swing.JPanel jPanel1;

@@ -22,7 +22,7 @@ public class dbConnector {
     
     public dbConnector(){
             try{
-                connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/pwd", "root", "");
+                connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/rems", "root", "");
             }catch(SQLException ex){
                     System.out.println("Can't connect to database: "+ex.getMessage());
             }
@@ -37,10 +37,10 @@ public class dbConnector {
         //Function to save data
         public boolean insertData(String sql){
             try{
-                PreparedStatement pst = connect.prepareStatement(sql);
-                pst.executeUpdate();
+                PreparedStatement rems = connect.prepareStatement(sql);
+                rems.executeUpdate();
                 System.out.println("Inserted Successfully!");
-                pst.close();
+                rems.close();
                return true;
             }catch(SQLException ex){
                 System.out.println("Connection Error: "+ex);

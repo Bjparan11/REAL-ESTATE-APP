@@ -65,13 +65,13 @@ public class Register extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         name = new javax.swing.JLabel();
-        age = new javax.swing.JLabel();
-        address = new javax.swing.JLabel();
+        LastName = new javax.swing.JLabel();
+        user = new javax.swing.JLabel();
         dob = new javax.swing.JLabel();
         cpassword = new javax.swing.JLabel();
         stats = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
-        fname17 = new javax.swing.JTextField();
+        fname = new javax.swing.JTextField();
         lname = new javax.swing.JTextField();
         username = new javax.swing.JTextField();
         password = new javax.swing.JTextField();
@@ -82,6 +82,7 @@ public class Register extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -97,93 +98,100 @@ public class Register extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jButton2.setText("REGISTER");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, 110, 40));
 
         name.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         name.setText("FIRSTNAME:");
-        getContentPane().add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, -1, -1));
+        getContentPane().add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
 
-        age.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        age.setText("LASTNAME:");
-        getContentPane().add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, -1, -1));
+        LastName.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        LastName.setText("LASTNAME:");
+        getContentPane().add(LastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
 
-        address.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        address.setText("USERNAME:");
-        getContentPane().add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
+        user.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        user.setText("USERNAME:");
+        getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, -1));
 
         dob.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         dob.setText("PASSWORD:");
-        getContentPane().add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, -1, -1));
+        getContentPane().add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
 
         cpassword.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         cpassword.setText("CONFIRM PASSWORD:");
-        getContentPane().add(cpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, -1, -1));
+        getContentPane().add(cpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
         stats.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         stats.setText("EMAIL:");
-        getContentPane().add(stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, -1, -1));
+        getContentPane().add(stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
 
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailActionPerformed(evt);
             }
         });
-        getContentPane().add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, 170, -1));
+        getContentPane().add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 170, -1));
 
-        fname17.addActionListener(new java.awt.event.ActionListener() {
+        fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fname17ActionPerformed(evt);
+                fnameActionPerformed(evt);
             }
         });
-        getContentPane().add(fname17, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, 170, -1));
+        getContentPane().add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 170, -1));
 
         lname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lnameActionPerformed(evt);
             }
         });
-        getContentPane().add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 170, -1));
+        getContentPane().add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 170, -1));
 
         username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameActionPerformed(evt);
             }
         });
-        getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, 170, -1));
+        getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 170, -1));
 
         password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordActionPerformed(evt);
             }
         });
-        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 170, -1));
+        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 170, -1));
 
         cpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cpassActionPerformed(evt);
             }
         });
-        getContentPane().add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, 170, -1));
+        getContentPane().add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 170, -1));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setText("PHONENUMBER:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, -1, -1));
-        getContentPane().add(cnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 180, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, -1, -1));
+
+        cnum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cnumActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 170, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Admin" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, 170, -1));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 170, -1));
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(153, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 400));
 
-        jPanel3.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel3.setBackground(new java.awt.Color(0, 204, 204));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
@@ -192,11 +200,20 @@ public class Register extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 460, 40));
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jButton1.setText("ADMIN");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 110, 40));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-             if(fname17.getText().isEmpty()|| lname.getText().isEmpty()
+             if(fname.getText().isEmpty()|| lname.getText().isEmpty()
             || username.getText().isEmpty()|| password.getText().isEmpty()|| cpass.getText().isEmpty()|| email.getText().isEmpty()
             || cnum.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "All fields are required!");
@@ -208,8 +225,8 @@ public class Register extends javax.swing.JFrame {
 
             dbConnector dbc = new dbConnector();
 
-            if (dbc.insertData("INSERT INTO user(u_fname17, u_lname, u_username, u_password, u_cpass, u_email, u_phonenumber, status) "
-                + "VALUES('" + fname17.getText() + "', '" + lname.getText() + "', '"
+            if (dbc.insertData("INSERT INTO user(i_fname, i_lname, i_username, i_password, i_cpass, i_email, i_phonenumber, status) "
+                + "VALUES('" + fname.getText() + "', '" + lname.getText() + "', '"
                 + username.getText() + "', '" + password.getText() + "', '" + cpass.getText() + "','"
                 + email.getText() + "','" + cnum.getText() + "', 'PENDING')")) {
             JOptionPane.showMessageDialog(null, "Register Successfully");
@@ -230,9 +247,9 @@ public class Register extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_emailActionPerformed
 
-    private void fname17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fname17ActionPerformed
+    private void fnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fname17ActionPerformed
+    }//GEN-LAST:event_fnameActionPerformed
 
     private void lnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnameActionPerformed
         // TODO add your handling code here:
@@ -249,6 +266,16 @@ public class Register extends javax.swing.JFrame {
     private void cpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cpassActionPerformed
+
+    private void cnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cnumActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Admin ad = new Admin();
+        ad.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,31 +313,14 @@ public class Register extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel address;
-    private javax.swing.JLabel age;
+    private javax.swing.JLabel LastName;
     private javax.swing.JTextField cnum;
     private javax.swing.JTextField cpass;
     private javax.swing.JLabel cpassword;
     private javax.swing.JLabel dob;
     private javax.swing.JTextField email;
     private javax.swing.JTextField fname;
-    private javax.swing.JTextField fname1;
-    private javax.swing.JTextField fname10;
-    private javax.swing.JTextField fname11;
-    private javax.swing.JTextField fname12;
-    private javax.swing.JTextField fname13;
-    private javax.swing.JTextField fname14;
-    private javax.swing.JTextField fname15;
-    private javax.swing.JTextField fname16;
-    private javax.swing.JTextField fname17;
-    private javax.swing.JTextField fname2;
-    private javax.swing.JTextField fname3;
-    private javax.swing.JTextField fname4;
-    private javax.swing.JTextField fname5;
-    private javax.swing.JTextField fname6;
-    private javax.swing.JTextField fname7;
-    private javax.swing.JTextField fname8;
-    private javax.swing.JTextField fname9;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -322,6 +332,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel name;
     private javax.swing.JTextField password;
     private javax.swing.JLabel stats;
+    private javax.swing.JLabel user;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }
