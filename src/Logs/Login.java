@@ -6,7 +6,13 @@
 package Logs;
 
 import InterPage.Register;
+import dbConnect.dbConnector;
+import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import static sun.security.jgss.GSSUtil.login;
+import table.Table;
 
 /**
  *
@@ -18,9 +24,31 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
-        initComponents();
+        initComponents();  
     }
-
+            static String status1;
+            static String type1;
+            public static boolean loginAccount(String username, String password){
+             dbConnector db = new dbConnector();
+                try{
+             String query = "SELECT * FROM user WHERE username = '"+ username +"' AND pass = '"+password+"'";
+            ResultSet resultSet = db.getData(query);
+           
+            if(resultSet.next()){
+              
+                status1 = resultSet.getString("status"); 
+                type1 = resultSet.getString("type");
+                 
+                  return true;
+            }else{
+                return false; 
+            }
+        }catch(SQLException e){
+           
+            return false;
+        }
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,11 +65,11 @@ public class Login extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         User = new javax.swing.JLabel();
         Pass = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        Register = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        LOGin = new javax.swing.JButton();
-        password = new javax.swing.JPasswordField();
-        Username = new javax.swing.JTextField();
+        LOGIN = new javax.swing.JButton();
+        pw = new javax.swing.JPasswordField();
+        uname = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/building.jpg"))); // NOI18N
@@ -74,36 +102,36 @@ public class Login extends javax.swing.JFrame {
         Pass.setText("Password :");
         getContentPane().add(Pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 90, 30));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        jButton1.setText("REGISTER");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Register.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        Register.setText("REGISTER");
+        Register.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                RegisterActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, 110, 40));
+        getContentPane().add(Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, 110, 40));
 
         jLabel3.setFont(new java.awt.Font("Wide Latin", 3, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("LOGIN");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 180, 40));
 
-        LOGin.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        LOGin.setText("LOGIN");
-        LOGin.addActionListener(new java.awt.event.ActionListener() {
+        LOGIN.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        LOGIN.setText("LOGIN");
+        LOGIN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LOGinActionPerformed(evt);
+                LOGINActionPerformed(evt);
             }
         });
-        getContentPane().add(LOGin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 110, 40));
-        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 180, 30));
+        getContentPane().add(LOGIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 110, 40));
+        getContentPane().add(pw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 180, 30));
 
-        Username.addActionListener(new java.awt.event.ActionListener() {
+        uname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsernameActionPerformed(evt);
+                unameActionPerformed(evt);
             }
         });
-        getContentPane().add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 180, 30));
+        getContentPane().add(uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 180, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logs/buy-sell-land.jpg"))); // NOI18N
@@ -119,22 +147,48 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void LOGinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LOGinActionPerformed
+    private void LOGINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LOGINActionPerformed
+        dbConnector db = new dbConnector();
+        if (uname.getText().isEmpty() && pw.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter your username & password !!.");
+        } else if (uname.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please cannot be empty.");
+        } else if (pw.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Password cannot be empty.");
+        } else {
+            if (loginAccount(uname.getText(), pw.getText())) {
+                if (!status1.equals("Active")) {
+                    JOptionPane.showMessageDialog(null, "Pending Account, Please wait for the approval");
+                } else {
+            JOptionPane.showMessageDialog(null, "Login successful!");
+                        
+            if (type1.equals("Admin")) {
+                Table tl = new Table();
+                tl.setVisible(true);
+                this.dispose();
+            }  else {
+                JOptionPane.showMessageDialog(null, "No account type found!");
+            }
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Invalid Account, Please register first !!" );
+    }
+}
         Login lg = new Login();
         lg.setVisible(true);
         dispose();
-    }//GEN-LAST:event_LOGinActionPerformed
+    }//GEN-LAST:event_LOGINActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
         Register rg = new Register();
         rg.setVisible(true);
         dispose();
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_RegisterActionPerformed
 
-    private void UsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameActionPerformed
+    private void unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_UsernameActionPerformed
+    }//GEN-LAST:event_unameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,18 +226,18 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton LOGin;
+    private javax.swing.JButton LOGIN;
     private javax.swing.JLabel Pass;
+    private javax.swing.JButton Register;
     private javax.swing.JLabel User;
-    private javax.swing.JTextField Username;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField password;
+    private javax.swing.JPasswordField pw;
+    private javax.swing.JTextField uname;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

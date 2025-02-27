@@ -1,9 +1,12 @@
 package table;
 
+import com.sun.security.ntlm.Client;
+import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
 import dbConnect.dbConnector;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import net.proteanit.sql.DbUtils;
+/*import net.proteanit.sql.DbUtils;*/
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -57,7 +60,7 @@ public class Table extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        user = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -132,7 +135,7 @@ public class Table extends javax.swing.JFrame {
 
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 50));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        user.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -140,7 +143,7 @@ public class Table extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(user);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 680, 500));
 
@@ -162,11 +165,15 @@ public class Table extends javax.swing.JFrame {
     }//GEN-LAST:event_TypeActionPerformed
 
     private void OwnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OwnerActionPerformed
-        // TODO add your handling code here:
+      Table tl = new Table();
+      tl.setVisible(true);
+      dispose();
     }//GEN-LAST:event_OwnerActionPerformed
 
     private void ClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientActionPerformed
-        // TODO add your handling code here:
+       Table tl = new Table();
+       tl.setVisible(true);
+       dispose();
     }//GEN-LAST:event_ClientActionPerformed
 
     private void SaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaleActionPerformed
@@ -220,6 +227,6 @@ public class Table extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable user;
     // End of variables declaration//GEN-END:variables
 }
