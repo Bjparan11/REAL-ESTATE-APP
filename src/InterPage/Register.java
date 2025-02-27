@@ -79,10 +79,10 @@ public class Register extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         cnum = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -105,109 +105,109 @@ public class Register extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, 110, 40));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 470, 110, 40));
 
-        name.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        name.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         name.setText("FIRSTNAME:");
-        getContentPane().add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
+        getContentPane().add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 230, 90, 20));
 
         LastName.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         LastName.setText("LASTNAME:");
-        getContentPane().add(LastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
+        getContentPane().add(LastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, -1, -1));
 
         user.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         user.setText("USERNAME:");
-        getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, -1));
+        getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, -1, -1));
 
         dob.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         dob.setText("PASSWORD:");
-        getContentPane().add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
+        getContentPane().add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, -1, -1));
 
         cpassword.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         cpassword.setText("CONFIRM PASSWORD:");
-        getContentPane().add(cpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+        getContentPane().add(cpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, -1, -1));
 
         stats.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         stats.setText("EMAIL:");
-        getContentPane().add(stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
+        getContentPane().add(stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 380, -1, -1));
 
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailActionPerformed(evt);
             }
         });
-        getContentPane().add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 170, -1));
+        getContentPane().add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 380, 170, -1));
 
         fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fnameActionPerformed(evt);
             }
         });
-        getContentPane().add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 170, -1));
+        getContentPane().add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 170, -1));
 
         lname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lnameActionPerformed(evt);
             }
         });
-        getContentPane().add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 170, -1));
+        getContentPane().add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, 170, -1));
 
         username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameActionPerformed(evt);
             }
         });
-        getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 170, -1));
+        getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 170, -1));
 
         password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordActionPerformed(evt);
             }
         });
-        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 170, -1));
+        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 170, -1));
 
         cpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cpassActionPerformed(evt);
             }
         });
-        getContentPane().add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 170, -1));
+        getContentPane().add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 170, -1));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setText("PHONENUMBER:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, -1, -1));
 
         cnum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cnumActionPerformed(evt);
             }
         });
-        getContentPane().add(cnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 170, -1));
+        getContentPane().add(cnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 410, 170, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Admin" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 170, -1));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, 170, -1));
 
-        jPanel1.setBackground(new java.awt.Color(153, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 400));
-
-        jPanel3.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("REGISTER FORM");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, -1));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, -1, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 460, 40));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 40));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jButton1.setText("ADMIN");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 110, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 470, 110, 40));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InterPage/Building 2.jpg"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-450, 40, 1220, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -325,7 +325,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField lname;

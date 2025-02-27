@@ -46,160 +46,132 @@ public class Table extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel4 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel_APP_ICON = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         Property = new javax.swing.JButton();
         Type = new javax.swing.JButton();
         Images = new javax.swing.JButton();
-        Client = new javax.swing.JButton();
         Owner = new javax.swing.JButton();
-        Sales = new javax.swing.JButton();
-        Property5 = new javax.swing.JLabel();
+        Client = new javax.swing.JButton();
+        Sale = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        user = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
-
-        jPanel3.setBackground(new java.awt.Color(255, 153, 51));
-
-        jLabel_APP_ICON.setBackground(new java.awt.Color(255, 153, 51));
-        jLabel_APP_ICON.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User.png"))); // NOI18N
-        jLabel_APP_ICON.setOpaque(true);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        jLabel1.setText("MyAPP");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel_APP_ICON, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel_APP_ICON, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        Property.setBackground(new java.awt.Color(255, 255, 255));
-        Property.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        Property.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         Property.setText("Property");
+        Property.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PropertyActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Property, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 160, 40));
 
-        Type.setBackground(new java.awt.Color(255, 255, 255));
         Type.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         Type.setText("Property-Type");
+        Type.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TypeActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 160, 40));
 
-        Images.setBackground(new java.awt.Color(255, 255, 255));
         Images.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        Images.setText("Property-Image");
+        Images.setText("Property-Images");
+        Images.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ImagesActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Images, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 160, 40));
 
-        Client.setBackground(new java.awt.Color(255, 255, 255));
-        Client.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        Client.setText("Client");
-
-        Owner.setBackground(new java.awt.Color(255, 255, 255));
-        Owner.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        Owner.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         Owner.setText("Owner");
+        Owner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OwnerActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Owner, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 160, 40));
 
-        Sales.setBackground(new java.awt.Color(255, 255, 255));
-        Sales.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        Sales.setText("Sales");
+        Client.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        Client.setText("Client");
+        Client.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClientActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Client, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 160, 40));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Property, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Type, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Images, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Client, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Owner, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Sales, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
-                .addComponent(Property, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Type, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Images, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Client, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Owner, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Sales, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 127, Short.MAX_VALUE))
-        );
+        Sale.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        Sale.setText("Sales");
+        Sale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaleActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Sale, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 160, 40));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 170, 510));
+        jLabel2.setBackground(new java.awt.Color(51, 255, 102));
+        jLabel2.setOpaque(true);
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 180, 500));
 
-        Property5.setBackground(new java.awt.Color(255, 153, 51));
-        Property5.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        Property5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Property5.setText("Property");
-        Property5.setOpaque(true);
-        jPanel1.add(Property5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel5.setBackground(new java.awt.Color(0, 255, 102));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        user.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("TABLE");
+        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 180, 30));
+
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 50));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+
             },
             new String [] {
 
             }
         ));
-        jScrollPane1.setViewportView(user);
+        jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 660, 510));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 680, 500));
 
-        jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 840, 510));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void PropertyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropertyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PropertyActionPerformed
+
+    private void ImagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImagesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ImagesActionPerformed
+
+    private void TypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TypeActionPerformed
+
+    private void OwnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OwnerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OwnerActionPerformed
+
+    private void ClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ClientActionPerformed
+
+    private void SaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SaleActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,16 +213,13 @@ public class Table extends javax.swing.JFrame {
     private javax.swing.JButton Images;
     private javax.swing.JButton Owner;
     private javax.swing.JButton Property;
-    private javax.swing.JLabel Property5;
-    private javax.swing.JButton Sales;
+    private javax.swing.JButton Sale;
     private javax.swing.JButton Type;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel_APP_ICON;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable user;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
