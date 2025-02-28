@@ -1,43 +1,21 @@
-package table;
-
-import com.sun.security.ntlm.Client;
-import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
-import dbConnect.dbConnector;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import net.proteanit.sql.DbUtils;
-/*import net.proteanit.sql.DbUtils;*/
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package table;
 
 /**
  *
- * @author Windows 10
+ * @author DANIEL FAILADONA
  */
-public class Table extends javax.swing.JFrame {
+public class AdminDashboard extends javax.swing.JFrame {
 
     /**
-     * Creates new form Table
+     * Creates new form AdminDashboard
      */
-    public Table() {
+    public AdminDashboard() {
         initComponents();
-        displayData();
-    }
-    public void displayData(){
-        try{
-            dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT * FROM user");
-            user.setModel(DbUtils.resultSetToTableModel(rs));
-             rs.close();
-        }catch(SQLException ex){
-            System.out.println("Errors: "+ex.getMessage());
-
-        }
-
     }
 
     /**
@@ -53,7 +31,6 @@ public class Table extends javax.swing.JFrame {
         Property = new javax.swing.JButton();
         Type = new javax.swing.JButton();
         Images = new javax.swing.JButton();
-        Owner = new javax.swing.JButton();
         Client = new javax.swing.JButton();
         Sale = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -63,7 +40,6 @@ public class Table extends javax.swing.JFrame {
         user = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -94,23 +70,14 @@ public class Table extends javax.swing.JFrame {
         });
         jPanel3.add(Images, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 160, 40));
 
-        Owner.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        Owner.setText("Owner");
-        Owner.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OwnerActionPerformed(evt);
-            }
-        });
-        jPanel3.add(Owner, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 160, 40));
-
         Client.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        Client.setText("Client");
+        Client.setText("Accounts");
         Client.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ClientActionPerformed(evt);
             }
         });
-        jPanel3.add(Client, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 160, 40));
+        jPanel3.add(Client, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 160, 40));
 
         Sale.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         Sale.setText("Sales");
@@ -119,7 +86,7 @@ public class Table extends javax.swing.JFrame {
                 SaleActionPerformed(evt);
             }
         });
-        jPanel3.add(Sale, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 160, 40));
+        jPanel3.add(Sale, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 160, 40));
 
         jLabel2.setBackground(new java.awt.Color(51, 255, 102));
         jLabel2.setOpaque(true);
@@ -147,7 +114,26 @@ public class Table extends javax.swing.JFrame {
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 680, 500));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 550));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 860, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 550, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -156,24 +142,18 @@ public class Table extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PropertyActionPerformed
 
-    private void ImagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImagesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ImagesActionPerformed
-
     private void TypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TypeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TypeActionPerformed
 
-    private void OwnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OwnerActionPerformed
-      Table tl = new Table();
-      tl.setVisible(true);
-      dispose();
-    }//GEN-LAST:event_OwnerActionPerformed
+    private void ImagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImagesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ImagesActionPerformed
 
     private void ClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientActionPerformed
-       Table tl = new Table();
-       tl.setVisible(true);
-       dispose();
+        U_Admin ua = new U_Admin();
+        ua.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_ClientActionPerformed
 
     private void SaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaleActionPerformed
@@ -197,20 +177,20 @@ public class Table extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Table.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Table.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Table.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Table.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Table().setVisible(true);
+                new AdminDashboard().setVisible(true);
             }
         });
     }
@@ -218,7 +198,6 @@ public class Table extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Client;
     private javax.swing.JButton Images;
-    private javax.swing.JButton Owner;
     private javax.swing.JButton Property;
     private javax.swing.JButton Sale;
     private javax.swing.JButton Type;

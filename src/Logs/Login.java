@@ -12,43 +12,48 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import static sun.security.jgss.GSSUtil.login;
-import table.Table;
+import table.AdminDashboard;
+import table.UserDashboard;
 
-/**
- *
- * @author SCC6
- */
 public class Login extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
     public Login() {
-        initComponents();  
+        initComponents();
     }
-            static String status1;
-            static String type1;
-            public static boolean loginAccount(String username, String password){
-             dbConnector db = new dbConnector();
-                try{
-             String query = "SELECT * FROM user WHERE username = '"+ username +"' AND pass = '"+password+"'";
-            ResultSet resultSet = db.getData(query);
-           
-            if(resultSet.next()){
-              
-                status1 = resultSet.getString("status"); 
-                type1 = resultSet.getString("type");
-                 
-                  return true;
-            }else{
-                return false; 
+    
+    
+    
+    static String status1;
+    static String type1;
+
+    
+    public static boolean loginAccount(String username, String password)
+    {
+        dbConnector connector = new dbConnector();
+        try
+        {
+            String query = "SELECT * FROM user WHERE i_username='"+ username +"'AND i_password='"+ password +"'";
+            ResultSet resultSet = connector.getData(query);
+            if(resultSet.next())
+            {
+                status1 = resultSet.getString("status");
+                type1 = resultSet.getString("i_type");
+
+                return true;
+            }else
+            {
+                return false;
             }
-        }catch(SQLException e){
-           
+        }catch(SQLException ex)
+        {
             return false;
         }
-        
     }
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,22 +62,17 @@ public class Login extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        Register = new javax.swing.JButton();
+        LOGIN = new javax.swing.JButton();
         User = new javax.swing.JLabel();
         Pass = new javax.swing.JLabel();
-        Register = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        LOGIN = new javax.swing.JButton();
         pw = new javax.swing.JPasswordField();
         uname = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/building.jpg"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -87,9 +87,23 @@ public class Login extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 60));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 530));
+        Register.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        Register.setText("REGISTER");
+        Register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, 110, 40));
+
+        LOGIN.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        LOGIN.setText("LOGIN");
+        LOGIN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LOGINActionPerformed(evt);
+            }
+        });
+        getContentPane().add(LOGIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 110, 40));
 
         User.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         User.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -102,28 +116,10 @@ public class Login extends javax.swing.JFrame {
         Pass.setText("Password :");
         getContentPane().add(Pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 90, 30));
 
-        Register.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        Register.setText("REGISTER");
-        Register.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegisterActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, 110, 40));
-
         jLabel3.setFont(new java.awt.Font("Wide Latin", 3, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("LOGIN");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 180, 40));
-
-        LOGIN.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        LOGIN.setText("LOGIN");
-        LOGIN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LOGINActionPerformed(evt);
-            }
-        });
-        getContentPane().add(LOGIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 110, 40));
         getContentPane().add(pw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 180, 30));
 
         uname.addActionListener(new java.awt.event.ActionListener() {
@@ -136,16 +132,20 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logs/buy-sell-land.jpg"))); // NOI18N
         jLabel5.setText("Username :");
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jLabel1, org.jdesktop.beansbinding.ObjectProperty.create(), jLabel5, org.jdesktop.beansbinding.BeanProperty.create("background"));
-        bindingGroup.addBinding(binding);
-
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 770, 470));
-
-        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unameActionPerformed
+
+    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
+        Register rg = new Register();
+        rg.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_RegisterActionPerformed
 
     private void LOGINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LOGINActionPerformed
         dbConnector db = new dbConnector();
@@ -160,35 +160,28 @@ public class Login extends javax.swing.JFrame {
                 if (!status1.equals("Active")) {
                     JOptionPane.showMessageDialog(null, "Pending Account, Please wait for the approval");
                 } else {
-            JOptionPane.showMessageDialog(null, "Login successful!");
-                        
-            if (type1.equals("Admin")) {
-                Table tl = new Table();
-                tl.setVisible(true);
-                this.dispose();
-            }  else {
-                JOptionPane.showMessageDialog(null, "No account type found!");
+                    JOptionPane.showMessageDialog(null, "Login successful!");
+
+                    if (type1.equals("Admin")) {
+                        AdminDashboard ad = new AdminDashboard();
+                        ad.setVisible(true);
+                        this.dispose();
+                    }else if (type1.equals("User")) {
+                        UserDashboard ud = new UserDashboard();
+                        ud.setVisible(true);
+                        this.dispose();
+                    }  else {
+                        JOptionPane.showMessageDialog(null, "No account type found!");
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid Account, Please register first !!" );
             }
         }
-    } else {
-        JOptionPane.showMessageDialog(null, "Invalid Account, Please register first !!" );
-    }
-}
-        Login lg = new Login();
-        lg.setVisible(true);
-        dispose();
+        //        Login lg = new Login();
+        //        lg.setVisible(true);
+        //        dispose();
     }//GEN-LAST:event_LOGINActionPerformed
-
-    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
-        Register rg = new Register();
-        rg.setVisible(true);
-        dispose();
-
-    }//GEN-LAST:event_RegisterActionPerformed
-
-    private void unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,14 +223,11 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Pass;
     private javax.swing.JButton Register;
     private javax.swing.JLabel User;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField pw;
     private javax.swing.JTextField uname;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

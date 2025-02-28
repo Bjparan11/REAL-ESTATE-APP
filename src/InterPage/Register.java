@@ -9,6 +9,8 @@ import Logs.Login;
 import dbConnect.dbConnector;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -29,15 +31,15 @@ public class Register extends javax.swing.JFrame {
         dbConnector dbc = new dbConnector();
         
        try{
-           String query = "SELECT * FROM user  WHERE u_username = '" +username.getText()+ "' OR u_email = '" + email.getText()+ "'";
+           String query = "SELECT * FROM user  WHERE i_username = '" +username.getText()+ "' OR i_email = '" + email.getText()+ "'";
             ResultSet resultSet = dbc.getData(query);
       if(resultSet.next()){
-      em = resultSet.getString("u_email");
+      em = resultSet.getString("i_email");
       if(em.equals(email.getText())){
       JOptionPane.showMessageDialog(null, "Email is Already Used! ");
       email.setText("");
       }
-      usname = resultSet.getString("u_username");
+      usname = resultSet.getString("i_username");
       if(usname.equals(username.getText())){
           JOptionPane.showMessageDialog(null, "Username is Already Used! ");
       }
@@ -78,10 +80,9 @@ public class Register extends javax.swing.JFrame {
         cpass = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         cnum = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        type = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -184,8 +185,8 @@ public class Register extends javax.swing.JFrame {
         });
         getContentPane().add(cnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 410, 170, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Admin" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, 170, -1));
+        type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Admin" }));
+        getContentPane().add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, 170, -1));
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -197,15 +198,6 @@ public class Register extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 40));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        jButton1.setText("ADMIN");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 470, 110, 40));
-
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InterPage/Building 2.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-450, 40, 1220, 520));
 
@@ -213,22 +205,31 @@ public class Register extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-             if(fname.getText().isEmpty()|| lname.getText().isEmpty()
-            || username.getText().isEmpty()|| password.getText().isEmpty()|| cpass.getText().isEmpty()|| email.getText().isEmpty()
-            || cnum.getText().isEmpty()){
+            if(fname.getText().isEmpty()|| lname.getText().isEmpty()|| username.getText().isEmpty()||
+               password.getText().isEmpty()|| cpass.getText().isEmpty()
+               || email.getText().isEmpty()|| cnum.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "All fields are required!");
         }else if(password.getText().length() < 8){
             JOptionPane.showMessageDialog(null, "Characters password is 8 above!");
             password.setText("");
-
+        }else if(!password.getText().equals(cpass.getText())){
+            JOptionPane.showMessageDialog(null, "Password Does Not Match");
+            password.setText("");
+        }else if(!isValidEmail(email.getText())){
+            JOptionPane.showMessageDialog(null, "Invalid Email");
+        } else if (!isNumeric(cnum.getText())) {
+             JOptionPane.showMessageDialog(null, "Contact number must contain only numbers.");
+        }else if(cnum.getText().length() > 15 || cnum.getText().length() < 11)
+        {
+            JOptionPane.showMessageDialog(null, "Invalid Phone num");
         }else{
 
             dbConnector dbc = new dbConnector();
 
-            if (dbc.insertData("INSERT INTO user(i_fname, i_lname, i_username, i_password, i_cpass, i_email, i_phonenumber, status) "
+            if (dbc.insertData("INSERT INTO user(i_fname, i_lname, i_username, i_password, i_email, i_phonenumber, i_type, status) "
                 + "VALUES('" + fname.getText() + "', '" + lname.getText() + "', '"
-                + username.getText() + "', '" + password.getText() + "', '" + cpass.getText() + "','"
-                + email.getText() + "','" + cnum.getText() + "', 'PENDING')")) {
+                + username.getText() + "', '" + password.getText() + "', '"
+                + email.getText() + "', '" + type.getSelectedItem().toString() + "', 'PENDING')")) {
             JOptionPane.showMessageDialog(null, "Register Successfully");
 
             JOptionPane.showMessageDialog(null, "Inserted Successfully!");
@@ -270,12 +271,6 @@ public class Register extends javax.swing.JFrame {
     private void cnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnumActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cnumActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Admin ad = new Admin();
-        ad.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -320,9 +315,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel dob;
     private javax.swing.JTextField email;
     private javax.swing.JTextField fname;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -332,7 +325,27 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel name;
     private javax.swing.JTextField password;
     private javax.swing.JLabel stats;
+    private javax.swing.JComboBox<String> type;
     private javax.swing.JLabel user;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
+
+
+    private boolean isValidEmail(String text) {
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+    Pattern pattern = Pattern.compile(regex);
+    Matcher matcher = pattern.matcher(text);
+    return matcher.matches();
+
+    }
+    
+    private boolean isNumeric(String text) {
+        try {
+        Double.parseDouble(text);
+        return true;
+    } catch (NumberFormatException e) {
+        return false;
+    }
+    }
+
 }
