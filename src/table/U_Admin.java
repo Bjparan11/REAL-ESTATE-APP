@@ -49,7 +49,12 @@ public class U_Admin extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        Sale = new javax.swing.JButton();
+        Back = new javax.swing.JButton();
+        Add = new javax.swing.JButton();
+        Remove = new javax.swing.JButton();
+        Update = new javax.swing.JButton();
+        Refresh = new javax.swing.JButton();
+        Edit = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -60,14 +65,74 @@ public class U_Admin extends javax.swing.JFrame {
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Sale.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        Sale.setText("Back");
-        Sale.addMouseListener(new java.awt.event.MouseAdapter() {
+        Back.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        Back.setText("Back");
+        Back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SaleMouseClicked(evt);
+                BackMouseClicked(evt);
             }
         });
-        jPanel3.add(Sale, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 160, 40));
+        Back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 160, 40));
+
+        Add.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        Add.setText("Add");
+        jPanel3.add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 140, 40));
+
+        Remove.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        Remove.setText("Remove");
+        Remove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoveActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 140, 40));
+
+        Update.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        Update.setText("Update");
+        Update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UpdateMouseClicked(evt);
+            }
+        });
+        Update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Update, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 140, 40));
+
+        Refresh.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        Refresh.setText("Refresh");
+        Refresh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RefreshMouseClicked(evt);
+            }
+        });
+        Refresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RefreshActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 140, 40));
+
+        Edit.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        Edit.setText("Edit");
+        Edit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EditMouseClicked(evt);
+            }
+        });
+        Edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 140, 40));
 
         jLabel2.setBackground(new java.awt.Color(51, 255, 102));
         jLabel2.setOpaque(true);
@@ -99,31 +164,59 @@ public class U_Admin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 860, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaleMouseClicked
+    private void BackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackMouseClicked
         AdminDashboard ad = new AdminDashboard();
         ad.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_SaleMouseClicked
+    }//GEN-LAST:event_BackMouseClicked
+
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BackActionPerformed
+
+    private void UpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpdateMouseClicked
+
+    private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpdateActionPerformed
+
+    private void RefreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefreshMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RefreshMouseClicked
+
+    private void RefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RefreshActionPerformed
+
+    private void RemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RemoveActionPerformed
+
+    private void EditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EditMouseClicked
+
+    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EditActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,7 +254,12 @@ public class U_Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Sale;
+    private javax.swing.JButton Add;
+    private javax.swing.JButton Back;
+    private javax.swing.JButton Edit;
+    private javax.swing.JButton Refresh;
+    private javax.swing.JButton Remove;
+    private javax.swing.JButton Update;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel3;

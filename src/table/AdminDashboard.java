@@ -5,6 +5,8 @@
  */
 package table;
 
+import Logs.Login;
+
 /**
  *
  * @author DANIEL FAILADONA
@@ -33,6 +35,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         Images = new javax.swing.JButton();
         Client = new javax.swing.JButton();
         Sale = new javax.swing.JButton();
+        Logout = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -87,6 +90,20 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         jPanel3.add(Sale, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 160, 40));
+
+        Logout.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        Logout.setText("Logout");
+        Logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                LogoutMouseExited(evt);
+            }
+        });
+        Logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogoutActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, 160, 40));
 
         jLabel2.setBackground(new java.awt.Color(51, 255, 102));
         jLabel2.setOpaque(true);
@@ -160,6 +177,16 @@ public class AdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SaleActionPerformed
 
+    private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LogoutActionPerformed
+
+    private void LogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutMouseExited
+       Login ln = new Login();
+       ln.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_LogoutMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -198,6 +225,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Client;
     private javax.swing.JButton Images;
+    private javax.swing.JButton Logout;
     private javax.swing.JButton Property;
     private javax.swing.JButton Sale;
     private javax.swing.JButton Type;
