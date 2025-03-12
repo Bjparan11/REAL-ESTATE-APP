@@ -6,6 +6,8 @@
 package table;
 
 import Logs.Login;
+import dbconnect.Session;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,20 +31,43 @@ public class AdminDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         Property = new javax.swing.JButton();
         Type = new javax.swing.JButton();
         Images = new javax.swing.JButton();
         Client = new javax.swing.JButton();
         Sale = new javax.swing.JButton();
-        Logout = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
+        wctext = new javax.swing.JLabel();
+        Logout = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        user = new javax.swing.JTable();
+        acc_email = new javax.swing.JLabel();
+        acc_fname = new javax.swing.JLabel();
+        acc_lname = new javax.swing.JLabel();
+        acc_username = new javax.swing.JLabel();
+        acc_type = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -91,6 +116,18 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
         jPanel3.add(Sale, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 160, 40));
 
+        jLabel2.setBackground(new java.awt.Color(51, 255, 102));
+        jLabel2.setOpaque(true);
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 190, 450));
+
+        jPanel5.setBackground(new java.awt.Color(0, 255, 102));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        wctext.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        wctext.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        wctext.setText("ADMIN DASHBOARD");
+        jPanel5.add(wctext, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 270, 30));
+
         Logout.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         Logout.setText("Logout");
         Logout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -103,39 +140,49 @@ public class AdminDashboard extends javax.swing.JFrame {
                 LogoutActionPerformed(evt);
             }
         });
-        jPanel3.add(Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, 160, 40));
+        jPanel5.add(Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 160, 30));
 
-        jLabel2.setBackground(new java.awt.Color(51, 255, 102));
-        jLabel2.setOpaque(true);
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 180, 500));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 50));
 
-        jPanel5.setBackground(new java.awt.Color(0, 255, 102));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("TABLE");
-        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 180, 30));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 50));
+        jLabel1.setBackground(new java.awt.Color(153, 255, 153));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-administrator-male-100.png"))); // NOI18N
+        jLabel1.setOpaque(true);
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 100));
 
-        user.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 100, 100));
 
-            },
-            new String [] {
+        acc_email.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        acc_email.setText("Email");
+        jPanel2.add(acc_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 240, 40));
 
-            }
-        ));
-        jScrollPane1.setViewportView(user);
+        acc_fname.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        acc_fname.setText("FirstName");
+        jPanel2.add(acc_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 240, 40));
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 680, 500));
+        acc_lname.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        acc_lname.setText("LastName");
+        jPanel2.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 240, 40));
+
+        acc_username.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        acc_username.setText("UserName");
+        jPanel2.add(acc_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 240, 40));
+
+        acc_type.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        acc_type.setText("Type ");
+        jPanel2.add(acc_type, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 240, 40));
+
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 500, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 860, Short.MAX_VALUE)
+            .addGap(0, 680, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -144,7 +191,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -178,14 +225,32 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_SaleActionPerformed
 
     private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LogoutActionPerformed
-
-    private void LogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutMouseExited
        Login ln = new Login();
        ln.setVisible(true);
        this.dispose();
+    }//GEN-LAST:event_LogoutActionPerformed
+
+    private void LogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutMouseExited
+       
     }//GEN-LAST:event_LogoutMouseExited
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Session sess = Session.getInstance();
+        if(sess.getIid() == 0)
+        {
+           JOptionPane.showMessageDialog(null, "No Account, Login First");
+            Login l = new Login();
+            l.setVisible(true);
+            this.dispose();
+        }else
+        {
+            acc_fname.setText("FirstName : " + sess.getFname());
+            acc_lname.setText("LastName : " + sess.getLname());
+            acc_username.setText("UserName : " + sess.getUsername());
+            acc_type.setText("UserType : " + sess.getType());
+            acc_email.setText("User Email : " + sess.getEmail());
+        }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -229,11 +294,18 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton Property;
     private javax.swing.JButton Sale;
     private javax.swing.JButton Type;
+    private javax.swing.JLabel acc_email;
+    private javax.swing.JLabel acc_fname;
+    private javax.swing.JLabel acc_lname;
+    private javax.swing.JLabel acc_type;
+    private javax.swing.JLabel acc_username;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable user;
+    private javax.swing.JLabel wctext;
     // End of variables declaration//GEN-END:variables
 }

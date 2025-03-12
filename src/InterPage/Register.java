@@ -6,7 +6,9 @@
 package InterPage;
 
 import Logs.Login;
+import dbConnect.PasswordHasher;
 import dbConnect.dbConnector;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.regex.Matcher;
@@ -189,7 +191,7 @@ public class Register extends javax.swing.JFrame {
         type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Admin" }));
         getContentPane().add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, 170, -1));
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
@@ -217,11 +219,12 @@ public class Register extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-450, 40, 1220, 520));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
             if(fname.getText().isEmpty()|| lname.getText().isEmpty()|| username.getText().isEmpty()||
-               password.getText().isEmpty()|| cpass.getText().isEmpty()
+               password.getText().isEmpty()|| email.getText().isEmpty()
                || email.getText().isEmpty()|| cnum.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "All fields are required!");
         }else if(password.getText().length() < 8){
@@ -240,10 +243,13 @@ public class Register extends javax.swing.JFrame {
         }else{
 
             dbConnector dbc = new dbConnector();
+            try
+            {
+            String pass = PasswordHasher.hashPassword(password.getText());
 
             if (dbc.insertData("INSERT INTO user(i_fname, i_lname, i_username, i_password, i_email, i_phonenumber, i_type, status) "
                 + "VALUES('" + fname.getText() + "', '" + lname.getText() + "', '"
-                + username.getText() + "', '" + password.getText() + "', '"
+                + username.getText() + "', '" + pass + "', '"
                 + email.getText() + "','" + cnum.getText() + "', '" + type.getSelectedItem().toString() + "', 'PENDING')")) {
             JOptionPane.showMessageDialog(null, "Register Successfully");
 
@@ -252,8 +258,9 @@ public class Register extends javax.swing.JFrame {
             ads.setVisible(true);
             this.dispose(); 
 
-        }else{
-            JOptionPane.showMessageDialog(null, "Connection Error!");
+        }
+            }catch(NoSuchAlgorithmException ex){
+                System.out.println(""+ex);
         }
         }
               
@@ -288,13 +295,13 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_cnumActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+        Login ln = new Login();
+       ln.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
-     Login ln = new Login();
-       ln.setVisible(true);
-       this.dispose();
+     
     }//GEN-LAST:event_jButton3MouseExited
 
     /**

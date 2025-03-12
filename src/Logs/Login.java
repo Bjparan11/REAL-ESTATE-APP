@@ -6,6 +6,7 @@
 package Logs;
 
 import InterPage.Register;
+import dbconnect.Session;
 import dbConnect.dbConnector;
 import java.awt.Color;
 import java.sql.ResultSet;
@@ -13,7 +14,9 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import static sun.security.jgss.GSSUtil.login;
 import table.AdminDashboard;
-import table.UserDashboard;
+import User.UserDashboard;
+import dbConnect.PasswordHasher;
+import java.security.NoSuchAlgorithmException;
 
 public class Login extends javax.swing.JFrame {
 
@@ -35,20 +38,45 @@ public class Login extends javax.swing.JFrame {
         dbConnector connector = new dbConnector();
         try
         {
-            String query = "SELECT * FROM user WHERE i_username='"+ username +"'AND i_password='"+ password +"'";
+            
+            String query = "SELECT * FROM user WHERE i_username='"+ username +"'";
             ResultSet resultSet = connector.getData(query);
             if(resultSet.next())
             {
+                
+
+                String hashedPass = resultSet.getString("i_password");
+                String rehashedPass = PasswordHasher.hashPassword(password);
+                
+                if(hashedPass.equals(rehashedPass))
+                {
+                    
+
                 status1 = resultSet.getString("status");
                 type1 = resultSet.getString("i_type");
+                Session sess = Session.getInstance();
+                sess.setIid(resultSet.getInt("i_id"));
+                sess.setFname(resultSet.getString("i_fname"));
+                sess.setLname(resultSet.getString("i_lname"));
+                sess.setUsername(resultSet.getString("i_username"));
+                sess.setType(resultSet.getString("i_type"));
+                sess.setEmail(resultSet.getString("i_email"));
+                    
 
                 return true;
+                }else
+                {
+                    
+                    return false;
+                }
             }else
             {
+               
                 return false;
             }
-        }catch(SQLException ex)
+        }catch(SQLException | NoSuchAlgorithmException ex)
         {
+            System.out.println(""+ex); // Always put 
             return false;
         }
     }
@@ -77,15 +105,15 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 0));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("REAL ESTATE MANAGEMENT SYSTEM");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 490, 50));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 490, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 60));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 50));
 
         Register.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         Register.setText("REGISTER");
@@ -132,9 +160,10 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logs/buy-sell-land.jpg"))); // NOI18N
         jLabel5.setText("Username :");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 770, 470));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 770, 480));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unameActionPerformed
@@ -149,24 +178,30 @@ public class Login extends javax.swing.JFrame {
 
     private void LOGINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LOGINActionPerformed
         dbConnector db = new dbConnector();
+        
         if (uname.getText().isEmpty() && pw.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter your username & password !!.");
         } else if (uname.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please cannot be empty.");
         } else if (pw.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Password cannot be empty.");
-        } else {
-            if (loginAccount(uname.getText(), pw.getText())) {
-                if (!status1.equals("Active")) {
+            
+        } else if (loginAccount(uname.getText(), pw.getText())) 
+            {
+                if (!status1.equals("Active")) 
+                {
                     JOptionPane.showMessageDialog(null, "Pending Account, Please wait for the approval");
-                } else {
+                } else 
+                {
                     JOptionPane.showMessageDialog(null, "Login successful!");
 
-                    if (type1.equals("Admin")) {
+                    if (type1.equals("Admin")) 
+                    {
                         AdminDashboard ad = new AdminDashboard();
                         ad.setVisible(true);
                         this.dispose();
-                    }else if (type1.equals("User")) {
+                    }else if (type1.equals("User")) 
+                    {
                         UserDashboard ud = new UserDashboard();
                         ud.setVisible(true);
                         this.dispose();
@@ -176,7 +211,7 @@ public class Login extends javax.swing.JFrame {
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid Account, Please register first !!" );
-            }
+            
         }
         //        Login lg = new Login();
         //        lg.setVisible(true);

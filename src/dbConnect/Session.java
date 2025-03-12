@@ -1,14 +1,15 @@
-package dbConnect;
+package dbconnect;
 
 
-public class Session {
+public class Session { 
+    
     private static Session instance;
-    private int uid;
+    private int iid;
     private String fname;
     private String lname;
-    private String uname;
+    private String username;
     private String type;
-    private int phone;
+    private String email;
 
     
     private Session(){
@@ -27,12 +28,12 @@ public class Session {
         return instance == null;
     }
     
-        public int getUid() {
-        return uid;
+        public int getIid() {
+        return iid;
     }
 
-    public void setUid(int uid) {
-        this.uid = uid;
+    public void setIid(int iid) {
+        this.iid = iid;
     }
 
     public String getFname() {
@@ -51,12 +52,12 @@ public class Session {
         this.lname = lname;
     }
 
-    public String getUname() {
-        return uname;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUname(String uname) {
-        this.uname = uname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getType() {
@@ -67,12 +68,12 @@ public class Session {
         this.type = type;
     }
     
-        public int getPhone() {
-        return phone;
+        public String getEmail() {
+        return email;
     }
 
-    public void setPhone(int phone) {
-        this.phone = phone;
+    public void setEmail (String email) {
+        this.email = email;
     }
     
 }

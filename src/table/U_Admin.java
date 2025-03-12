@@ -5,9 +5,12 @@
  */
 package table;
 
+import InterPage.CreateUserForm;
 import dbConnect.dbConnector;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 
 
@@ -54,7 +57,6 @@ public class U_Admin extends javax.swing.JFrame {
         Remove = new javax.swing.JButton();
         Update = new javax.swing.JButton();
         Refresh = new javax.swing.JButton();
-        Edit = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -71,16 +73,24 @@ public class U_Admin extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BackMouseClicked(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BackMouseExited(evt);
+            }
         });
         Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackActionPerformed(evt);
             }
         });
-        jPanel3.add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 160, 40));
+        jPanel3.add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 140, 40));
 
         Add.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         Add.setText("Add");
+        Add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddActionPerformed(evt);
+            }
+        });
         jPanel3.add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 140, 40));
 
         Remove.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
@@ -118,27 +128,13 @@ public class U_Admin extends javax.swing.JFrame {
                 RefreshActionPerformed(evt);
             }
         });
-        jPanel3.add(Refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 140, 40));
+        jPanel3.add(Refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 140, 40));
 
-        Edit.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        Edit.setText("Edit");
-        Edit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                EditMouseClicked(evt);
-            }
-        });
-        Edit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditActionPerformed(evt);
-            }
-        });
-        jPanel3.add(Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 140, 40));
-
-        jLabel2.setBackground(new java.awt.Color(51, 255, 102));
+        jLabel2.setBackground(new java.awt.Color(204, 255, 255));
         jLabel2.setOpaque(true);
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 180, 500));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 180, 390));
 
-        jPanel5.setBackground(new java.awt.Color(0, 255, 102));
+        jPanel5.setBackground(new java.awt.Color(204, 255, 255));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
@@ -158,7 +154,7 @@ public class U_Admin extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbl_user);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 680, 500));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 680, 390));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -195,7 +191,44 @@ public class U_Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_UpdateMouseClicked
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
-        // TODO add your handling code here:
+      int rowIndex = tbl_user.getSelectedRow();
+      
+      if(rowIndex < 0)
+      {
+       JOptionPane.showMessageDialog(null, "Please select an Item");
+       
+      }else
+      {
+          CreateUserForm cuf = new CreateUserForm();
+          
+          try
+          {
+              dbConnector dbc = new dbConnector();
+              TableModel tbl = tbl_user.getModel();
+              ResultSet rs = dbc.getData("SELECT * FROM user WHERE i_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
+              if(rs.next())
+              {
+                  cuf.IID.setText("" + rs.getString("i_id"));
+                  cuf.fname.setText("" + rs.getString("i_fname"));
+                  cuf.lname.setText("" + rs.getString("i_lname"));
+                  cuf.username.setText("" + rs.getString("i_username"));
+                  cuf.password.setText("" + rs.getString("i_password"));
+                  cuf.email.setText("" + rs.getString("i_email"));
+                  cuf.cnum.setText("" + rs.getString("i_phonenumber"));
+                  cuf.type.setSelectedItem("" + rs.getString("i_type"));
+                  cuf.status.setSelectedItem("" + rs.getString("status"));
+                  cuf.add.setEnabled(false);
+                  cuf.update.setEnabled(true);
+                  
+                  cuf.setVisible(true);
+                  this.dispose();
+              }
+              
+          }catch(SQLException ex)
+          {
+              System.out.println(""+ex);
+          }
+      }
     }//GEN-LAST:event_UpdateActionPerformed
 
     private void RefreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefreshMouseClicked
@@ -210,13 +243,15 @@ public class U_Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RemoveActionPerformed
 
-    private void EditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EditMouseClicked
+    private void BackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackMouseExited
 
-    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EditActionPerformed
+    }//GEN-LAST:event_BackMouseExited
+
+    private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
+      CreateUserForm cuf =  new CreateUserForm();
+      cuf.setVisible(true);
+      this.dispose();
+    }//GEN-LAST:event_AddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,7 +291,6 @@ public class U_Admin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Add;
     private javax.swing.JButton Back;
-    private javax.swing.JButton Edit;
     private javax.swing.JButton Refresh;
     private javax.swing.JButton Remove;
     private javax.swing.JButton Update;

@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 
-public class PasswordHarsher {
+public class PasswordHasher {
     
     public static String hashPassword(String password) throws NoSuchAlgorithmException 
     {
